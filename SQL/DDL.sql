@@ -48,7 +48,7 @@ CREATE TABLE RoomBookings (
 CREATE TABLE PersonalSession (
 	psession_id SERIAL PRIMARY KEY,
 	room_number INT,
-	FOREIGN KEY (room_number) REFERENCES RoomBookings (room_number),
+	FOREIGN KEY (room_number) REFERENCES RoomBookings (room_number) ON DELETE CASCADE,
 	time_day DATE,
 	time_start TIME,
 	time_end TIME
@@ -57,7 +57,7 @@ CREATE TABLE PersonalSession (
 CREATE TABLE TakesPersonalSession (
 	taking_id SERIAL PRIMARY KEY,
 	psession_id INT,
-	FOREIGN KEY (psession_id) REFERENCES PersonalSession (psession_id),
+	FOREIGN KEY (psession_id) REFERENCES PersonalSession (psession_id) ON DELETE CASCADE,
 	user_id INT,
 	FOREIGN KEY (user_id) REFERENCES MemberProfile (user_id)
 );
@@ -65,7 +65,7 @@ CREATE TABLE TakesPersonalSession (
 CREATE TABLE GroupSession (
 	gsession_id SERIAL PRIMARY KEY,
 	room_number INT,
-	FOREIGN KEY (room_number) REFERENCES RoomBookings (room_number),
+	FOREIGN KEY (room_number) REFERENCES RoomBookings (room_number) ON DELETE CASCADE,
 	time_day DATE,
 	time_start TIME,
 	time_end TIME
@@ -74,7 +74,7 @@ CREATE TABLE GroupSession (
 CREATE TABLE TakesGroupSession (
 	taking_id SERIAL PRIMARY KEY,
 	gsession_id INT,
-	FOREIGN KEY (gsession_id) REFERENCES GroupSession (gsession_id),
+	FOREIGN KEY (gsession_id) REFERENCES GroupSession (gsession_id) ON DELETE CASCADE,
 	user_id INT,
 	FOREIGN KEY (user_id) REFERENCES MemberProfile (user_id)
 );

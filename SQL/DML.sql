@@ -66,6 +66,7 @@ VALUES
 
 INSERT INTO TrainerProfile (login_id, first_name, last_name, personal_info)
 VALUES
+(2, 'Trainer', 'Trainer', 'Basic trainer login'),
 (8, 'Burt', 'Trainerman', 'i train');
 
 INSERT INTO TrainerAvailability (trainer_id, time_day, time_start, time_end)
@@ -74,7 +75,7 @@ VALUES
 
 INSERT INTO AdminProfile (login_id, first_name, last_name, personal_info)
 VALUES
-(3, 'Ad', 'min', 'admin');
+(3, 'Admin', 'Admin', 'Basic admin login');
 
 INSERT INTO Equipment (equip_name, status)
 VALUES
