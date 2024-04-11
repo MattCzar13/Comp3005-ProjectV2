@@ -581,6 +581,46 @@ def register() -> bool:
 				cursor.execute(SQL, data)
 				
 				return False
+			case "T":
+				
+				fname = input("FIRST NAME: ")
+				lname = input("LAST NAME: ")
+				pinfo = input("PERSONAL INFO: ")
+				
+				SQL = "INSERT INTO credentials (user_name, user_password) VALUES ((%s), (%s))"
+				data = (username, password)
+				cursor.execute(SQL, data)
+				
+				SQL = "SELECT login_id FROM credentials WHERE credentials.user_password = (%s)"
+				data = (password, )
+				cursor.execute(SQL, data)
+				login_id = cursor.fetchone()[0]
+
+				SQL = "INSERT INTO trainerprofile (login_id, first_name, last_name, personal_info) VALUES ((%s), (%s), (%s), (%s))"
+				data = (login_id, fname, lname, pinfo)
+				cursor.execute(SQL, data)
+				
+				return False
+			case "A":
+				
+				fname = input("FIRST NAME: ")
+				lname = input("LAST NAME: ")
+				pinfo = input("PERSONAL INFO: ")
+				
+				SQL = "INSERT INTO credentials (user_name, user_password) VALUES ((%s), (%s))"
+				data = (username, password)
+				cursor.execute(SQL, data)
+				
+				SQL = "SELECT login_id FROM credentials WHERE credentials.user_password = (%s)"
+				data = (password, )
+				cursor.execute(SQL, data)
+				login_id = cursor.fetchone()[0]
+
+				SQL = "INSERT INTO memberprofile (login_id, first_name, last_name, personal_info) VALUES ((%s), (%s), (%s), (%s))"
+				data = (login_id, fname, lname, pinfo)
+				cursor.execute(SQL, data)
+				
+				return False
 
 	else:
 		return False
